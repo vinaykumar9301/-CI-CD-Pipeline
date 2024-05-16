@@ -1,0 +1,83 @@
+Step 1: Create an AWS Account
+  Go to the AWS homepage.
+  Click on "Create an AWS Account" at the top right corner.
+  Follow the instructions to create your account. You'll need to provide your email address, password, and some personal information.
+  Enter your payment information. AWS offers a Free Tier for new users, so you won't be charged unless you exceed the limits of the Free Tier.
+
+Step 2: Launch an EC2 Instance
+  Sign in to the AWS Management Console.
+  Navigate to the EC2 service by clicking on "Services" in the top left corner, then selecting "EC2" under "Compute".
+  Click on the "Launch Instance" button.
+  Choose an Amazon Machine Image (AMI). For Django, you can select a Linux AMI (e.g., Amazon Linux, Ubuntu).
+  Select an Instance Type. For testing purposes, you can choose a t2.micro instance, which is eligible for the Free Tier.
+  Configure Instance Details. You can keep the default settings for most configurations, but you can specify details like the number of instances, network settings, etc.
+  Add Storage. Specify the size of the root volume for your instance. The default size should be sufficient for basic Django applications.
+  Configure Security Group. Create a new security group or select an existing one. Make sure to allow SSH (port 22) and HTTP/HTTPS (ports 80 and 443) traffic.
+  Review and Launch. Review your instance configuration, then click "Launch".
+  Create a new key pair or select an existing one. This key pair is used to connect to your instance via SSH.
+  Click "Launch Instances".
+
+Step 3: Access Your EC2 Instance
+  Once your instance is launched, you can find its public IP address in the EC2 dashboard.
+  Use SSH to connect to your instance. Open your terminal and use the following command:
+  ssh -i /path/to/your/key.pem ec2-user@your-public-ip
+  Replace /path/to/your/key.pem with the path to your private key file and your-public-ip with the public IP address of your instance.
+  You are now connected to your EC2 instance and can start configuring it for your Django application.
+
+Installation of Java
+  sudo apt update
+  sudo apt install fontconfig openjdk-17-jre
+  java -version
+  openjdk version "17.0.8" 2023-07-18
+  OpenJDK Runtime Environment (build 17.0.8+7-Debian-1deb12u1)
+  OpenJDK 64-Bit Server VM (build 17.0.8+7-Debian-1deb12u1, mixed mode, sharing)
+
+Installation Jenkins
+  A new release is produced weekly to deliver bug fixes and features to users and plugin developers. It can be installed from the debian apt repository.
+  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+    https://pkg.jenkins.io/debian/jenkins.io-2023.key
+  echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+    https://pkg.jenkins.io/debian binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+  sudo apt-get update
+  sudo apt-get install jenkins
+
+Start Jenkins
+  You can enable the Jenkins service to start at boot with the command:
+  -:-sudo systemctl enable jenkins
+  You can start the Jenkins service with the command:
+    -:-sudo systemctl start jenkins
+  You can check the status of the Jenkins service using the command:
+  -:-sudo systemctl status jenkins
+
+Step 1: Log in to Jenkins
+  Open your web browser and navigate to your Jenkins instance URL.
+  Log in using your credentials.
+
+Step 2: Create a New Job
+  Once logged in, click on the "New Item" link on the Jenkins dashboard.
+  If you don't see this link, you can also click on "New Item" from the left sidebar.
+  Enter a name for your job in the "Enter an item name" field.
+  Select the type of job you want to create. For most CI/CD pipelines, you'll likely choose "Freestyle project" or "Pipeline".
+  Click "OK" to create the job.
+
+Step 3: Configure the Job
+  You'll be redirected to the job configuration page. Here, you can configure various aspects of your job:
+  General: Configure general settings like description, discard old builds, etc.
+  Source Code Management: If your project is stored in a version control system (e.g., Git, Subversion), select the appropriate SCM and provide repository details.
+  Build Triggers: Configure triggers for when the job should be triggered (e.g., periodically, on code changes).
+  Build Environment: Set up any specific environment variables or configurations needed for the build.
+  Build: Define the build steps. This could include compiling code, running tests, packaging artifacts, etc.
+  Post-build Actions: Define actions to be taken after the build is complete (e.g., archive artifacts, trigger other jobs, send notifications).
+  Configure each section according to your project requirements.
+
+Step 4: Save the Job Configuration
+  Once you've configured all the necessary settings, click on the "Save" or "Apply" button to save your job configuration.
+
+Step 5: Run the Job
+  After saving the job configuration, you'll be redirected to the job dashboard.
+  To manually run the job, click on the "Build Now" button.
+  Jenkins will start executing the job according to the configured build steps.
+Step 6: Monitor the Job Execution
+  You can monitor the progress of the job execution on the job dashboard.
+  Jenkins will display the build status (success, failure, etc.) and provide detailed logs of each build step.
