@@ -34,18 +34,23 @@ OpenJDK 64-Bit Server VM (build 17.0.8+7-Debian-1deb12u1, mixed mode, sharing)
 ## Step 3: Weekly Release Installation
 
 - **Download Jenkins Key:**
+--- 
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian/jenkins.io-2023.key
-
+---
 
 - **Add Jenkins Repository:**
+---
 echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
-
+---
 
 - **Update Package Repository:**
+---
 sudo apt-get update
-
+---
 - **Install Jenkins:**
+---
 sudo apt-get install jenkins
+---
 Jenkins is then installed using the apt package manager.
 
 ## Step 4: Jenkins Login and Project Repository Setup
